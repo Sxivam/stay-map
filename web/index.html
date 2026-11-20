@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Stay Map</title>
+  <meta name="description" content="Every stay in one place on one map, with direct contacts. Built from OpenStreetMap.">
+  <meta name="theme-color" content="#06080c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+  <div id="map" aria-label="Map of stays"></div>
+
+  <header class="top glass" id="top">
+    <div class="brand">
+      <span class="dot"></span><span>Stay Map</span>
+      <select id="place" aria-label="Place" hidden></select>
+      <button class="trip" id="trip-btn" aria-expanded="false"></button>
+    </div>
+    <h1><span id="count">0</span> <small id="count-label">stays</small></h1>
+    <form class="trip-edit" id="trip-edit" hidden>
+      <label>Check in <input type="date" id="t-in"></label>
+      <label>Check out <input type="date" id="t-out"></label>
+      <label>People <input type="number" id="t-n" min="1" max="40" inputmode="numeric"></label>
+    </form>
+    <div class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="hostel near the beach in Anjuna with phone" aria-label="Describe the stay you want">
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filters"></div>
+  </header>
+
+  <nav class="ctl" aria-label="Map controls">
+    <button id="c-home" title="Whole area">⌂</button>
+    <button id="c-tilt" title="Tilt the map">3D</button>
+    <button id="c-replay" title="Replay the opening (R)">↻</button>
+    <button id="c-hide" title="Hide panels for filming (H)">◐</button>
+  </nav>
+
+  <section class="rail" id="rail" aria-label="Matching stays"></section>
+  <div class="empty glass" id="empty" hidden>Nothing matches. <button id="reset">Clear filters</button></div>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <footer class="credit" id="credit"></footer>
+
+  <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
